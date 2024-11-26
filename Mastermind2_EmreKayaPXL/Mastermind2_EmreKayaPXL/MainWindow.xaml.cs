@@ -98,12 +98,12 @@ namespace Mastermind2_EmreKayaPXL
         {
             this.Title = $" Mastermind             poging {attempts}/10";
 
-            if (attempts > 9)
-            {
-                ToggleDebug();
-                MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
-                this.Close();
-            }
+             if (attempts > 9)
+             {
+                 ToggleDebug();
+                 MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
+                 this.Close();
+             }
         }
 
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
