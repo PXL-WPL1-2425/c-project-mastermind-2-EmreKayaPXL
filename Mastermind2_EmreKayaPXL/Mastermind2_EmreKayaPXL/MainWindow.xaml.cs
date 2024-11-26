@@ -34,6 +34,102 @@ namespace Mastermind2_EmreKayaPXL
             timer.Tick += Timer_Tick;
 
         }
+        private void HistorieColorsAttempts()
+        {
+            List<Label> Rij1 = new List<Label> { A1, B1, C1, D1 };
+            List<Label> Rij2 = new List<Label> { A2, B2, C2, D2 };
+            List<Label> Rij3 = new List<Label> { A3, B3, C3, D3 };
+            List<Label> Rij4 = new List<Label> { A4, B4, C4, D4 };
+            List<Label> Rij5 = new List<Label> { A5, B5, C5, D5 };
+            List<Label> Rij6 = new List<Label> { A6, B6, C6, D6 };
+            List<Label> Rij7 = new List<Label> { A7, B7, C7, D7 };
+            List<Label> Rij8 = new List<Label> { A8, B8, C8, D8 };
+            List<Label> Rij9 = new List<Label> { A9, B9, C9, D9 };
+            List<Label> Rij10 = new List<Label> { A10, B10, C10, D10 };
+
+            List<Label> kolomHoofd = new List<Label> { label1, label2, label3, label4 };
+
+            switch (attempts)
+            {
+                case 2:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij1[i].Background = kolomHoofd[i].Background;
+                        Rij1[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij2[i].Background = kolomHoofd[i].Background;
+                        Rij2[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij3[i].Background = kolomHoofd[i].Background;
+                        Rij3[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 5:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij4[i].Background = kolomHoofd[i].Background;
+                        Rij4[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 6:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij5[i].Background = kolomHoofd[i].Background;
+                        Rij5[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 7:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij6[i].Background = kolomHoofd[i].Background;
+                        Rij6[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 8:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij7[i].Background = kolomHoofd[i].Background;
+                        Rij7[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 9:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij8[i].Background = kolomHoofd[i].Background;
+                        Rij8[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 10:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij9[i].Background = kolomHoofd[i].Background;
+                        Rij9[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                    break;
+                case 11:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Rij10[i].Background = kolomHoofd[i].Background;
+                        Rij10[i].BorderBrush = kolomHoofd[i].BorderBrush;
+                    }
+                        ToggleDebug();
+                        MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
+                        this.Close();
+                    break;
+                default:
+                    break;
+
+            }
+
+        }
 
         /// </summary> StopCountdown(): de timer stopt <summary>
         private void StopCountdown()
@@ -53,22 +149,28 @@ namespace Mastermind2_EmreKayaPXL
             elapsedTime = DateTime.Now - clicked;
             timerLabel.Content = $"{elapsedTime.Seconds} : {elapsedTime.Milliseconds.ToString().PadLeft(3, '0')}";
 
-            if (elapsedTime.Seconds >= 60)
+            if (elapsedTime.Seconds >= 10)
             {
                 timer.Stop();
-                timerLabel.Background = Brushes.Red;
                 MessageBox.Show("Te laat 10 seconden zijn voorbij, er wordt 1 poging toegevoegd");
                 clicked = DateTime.Now;
                 StartCountDown();
             }
+            else if (elapsedTime.Seconds >= 9)
+            {
+                timerLabel.Background = Brushes.Red;
+            }
+            else if (elapsedTime.Seconds >= 7)
+            {
+                timerLabel.Background = Brushes.DarkOrange;
+            }
+            else if (elapsedTime.Seconds >= 4)
+            {
+                timerLabel.Background = Brushes.DarkGreen;
+            }
             else
             {
                 timerLabel.Background = Brushes.Transparent;
-            }
-
-            if (elapsedTime.Seconds >= 7)
-            {
-                timerLabel.Background = Brushes.Orange;
             }
         }
 
@@ -98,12 +200,12 @@ namespace Mastermind2_EmreKayaPXL
         {
             this.Title = $" Mastermind             poging {attempts}/10";
 
-             if (attempts > 10)
-             {
-                 ToggleDebug();
-                 MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
-                 this.Close();
-             }
+             //if (attempts > 10)
+             //{
+             //    ToggleDebug();
+             //    MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
+             //    this.Close();
+             //}
         }
 
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -243,6 +345,7 @@ namespace Mastermind2_EmreKayaPXL
                     resultTextBlock.Text = "Niet de juiste kleuren gebruikt";
                     break;
             }
+            HistorieColorsAttempts();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
