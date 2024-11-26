@@ -98,7 +98,7 @@ namespace Mastermind2_EmreKayaPXL
         {
             this.Title = $" Mastermind             poging {attempts}/10";
 
-             if (attempts > 9)
+             if (attempts > 10)
              {
                  ToggleDebug();
                  MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
@@ -243,7 +243,6 @@ namespace Mastermind2_EmreKayaPXL
                     resultTextBlock.Text = "Niet de juiste kleuren gebruikt";
                     break;
             }
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
