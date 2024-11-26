@@ -23,6 +23,7 @@ namespace Mastermind2_EmreKayaPXL
         DateTime clicked;
         TimeSpan elapsedTime;
         int attempts = 1;
+        int score = 100;
 
         public MainWindow()
         {
@@ -199,13 +200,6 @@ namespace Mastermind2_EmreKayaPXL
         private void UpdateTitle()
         {
             this.Title = $" Mastermind             poging {attempts}/10";
-
-             //if (attempts > 10)
-             //{
-             //    ToggleDebug();
-             //    MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
-             //    this.Close();
-             //}
         }
 
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -287,7 +281,12 @@ namespace Mastermind2_EmreKayaPXL
                 else
                 {
                     label1.BorderBrush = Brushes.Wheat;
+                    score -= 1;
                 }
+            }
+            else
+            {
+                score -= 2;
             }
             if (randomColorsTextBox.Text.Contains(label2Color))
             {
@@ -299,7 +298,12 @@ namespace Mastermind2_EmreKayaPXL
                 else
                 {
                     label2.BorderBrush = Brushes.Wheat;
+                    score -= 1;
                 }
+            }
+            else
+            {
+                score -= 2;
             }
             if (randomColorsTextBox.Text.Contains(label3Color))
             {
@@ -311,7 +315,12 @@ namespace Mastermind2_EmreKayaPXL
                 else
                 {
                     label3.BorderBrush = Brushes.Wheat;
+                    score -= 1;
                 }
+            }
+            else
+            {
+                score -= 2;
             }
 
             if (randomColorsTextBox.Text.Contains(label4Color))
@@ -324,7 +333,12 @@ namespace Mastermind2_EmreKayaPXL
                 else
                 {
                     label4.BorderBrush = Brushes.Wheat;
+                    score -= 1;
                 }
+            }
+            else
+            {
+                score -= 2;
             }
 
             switch (MasterMindStrenghtNumber)
@@ -345,6 +359,7 @@ namespace Mastermind2_EmreKayaPXL
                     resultTextBlock.Text = "Niet de juiste kleuren gebruikt";
                     break;
             }
+            scoreTextBox.Text = $" Score: {score}";
             HistorieColorsAttempts();
         }
 
@@ -352,6 +367,7 @@ namespace Mastermind2_EmreKayaPXL
         {
             clicked = DateTime.Now;
             timer.Start();
+            scoreTextBox.Text = $" Score: {score}";
         }
 
         private bool isInDebug = false;
