@@ -522,5 +522,20 @@ namespace Mastermind2_EmreKayaPXL
             }
 
         }
+
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        MessageBoxResult closeTheWindow = MessageBox.Show("Bent u zeker Om het spel te sluiten?","VensterSluiten", MessageBoxButton.YesNo);
+  
+            if (closeTheWindow == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+                e.Cancel=true;
+            }
+        }
     }
 }

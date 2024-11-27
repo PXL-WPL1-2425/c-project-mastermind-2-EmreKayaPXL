@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mastermind2_EmreKayaPXL"
         mc:Ignorable="d"
-        Title="MasterMind" Height="450" Width="800" Background="LightGray" Loaded="Window_Loaded" KeyDown="Window_Keydown"  >
+        Title="MasterMind" Height="450" Width="800" Background="LightGray" Loaded="Window_Loaded" KeyDown="Window_Keydown" Closing="WindowClosing"  >
     <Grid>
         <StackPanel Name="ComboBoxPanel" Orientation="Horizontal" Margin="0,0,0,0">
             <ComboBox Name="ComboBox1" BorderThickness="3" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox1_SelectionChanged" >
