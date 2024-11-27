@@ -18,12 +18,16 @@ namespace Mastermind2_EmreKayaPXL
 {
     public partial class MainWindow : Window
     {
-        //StringBuilder sb = new StringBuilder();
         private DispatcherTimer timer = new DispatcherTimer();
         DateTime clicked;
         TimeSpan elapsedTime;
         int attempts = 1;
         int score = 100;
+        int correctTotalColor1 = 0;
+        int correctTotalColor2 = 0;
+        int correctTotalColor3 = 0;
+        int correctTotalColor4 = 0;
+        MessageBoxResult messageBoxResult;
 
         public MainWindow()
         {
@@ -35,7 +39,8 @@ namespace Mastermind2_EmreKayaPXL
             timer.Tick += Timer_Tick;
 
         }
-        private void HistorieColorsAttempts()
+
+        private void HistoryColorsAttempts()
         {
             List<Label> Rij1 = new List<Label> { A1, B1, C1, D1 };
             List<Label> Rij2 = new List<Label> { A2, B2, C2, D2 };
@@ -121,15 +126,93 @@ namespace Mastermind2_EmreKayaPXL
                         Rij10[i].Background = kolomHoofd[i].Background;
                         Rij10[i].BorderBrush = kolomHoofd[i].BorderBrush;
                     }
+                    ToggleDebug();
+
+                    messageBoxResult = MessageBox.Show($"U heeft verloren!\nScore: {score}/100\nAantal pogingen over: {10 - attempts}" +
+                        $"\nWilt u nog eens proberen?", "winnende bericht", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                    if (messageBoxResult == MessageBoxResult.Yes)
+                    {
+                        timerLabel.Content = "";
+                        correctTotalColor1 = 0;
+                        clicked = DateTime.Now;
+                        attempts = 1;
+                        UpdateTitle();
                         ToggleDebug();
-                        MessageBox.Show("Je hebt 10 pogingen gedaan, dus je bent verloren.");
+                        titleRandomColors();
+                        AllesRessetten();
+                        label1.Content = "Kleur 1";
+                        label2.Content = "Kleur 2";
+                        label3.Content = "Kleur 3";
+                        label4.Content = "Kleur 4";
+                        int MasterMindStrenghtNumber = 0;
+                    }
+                    else
+                    {
                         this.Close();
+                    }
                     break;
                 default:
                     break;
-
             }
+        }
+        private void AllesRessetten()
+        {
+            List<Label> Rij1 = new List<Label> { A1, B1, C1, D1 };
+            List<Label> Rij2 = new List<Label> { A2, B2, C2, D2 };
+            List<Label> Rij3 = new List<Label> { A3, B3, C3, D3 };
+            List<Label> Rij4 = new List<Label> { A4, B4, C4, D4 };
+            List<Label> Rij5 = new List<Label> { A5, B5, C5, D5 };
+            List<Label> Rij6 = new List<Label> { A6, B6, C6, D6 };
+            List<Label> Rij7 = new List<Label> { A7, B7, C7, D7 };
+            List<Label> Rij8 = new List<Label> { A8, B8, C8, D8 };
+            List<Label> Rij9 = new List<Label> { A9, B9, C9, D9 };
+            List<Label> Rij10 = new List<Label> { A10, B10, C10, D10 };
 
+            List<Label> kolomHoofd = new List<Label> { label1, label2, label3, label4 };
+            attempts = 1;
+            ComboBox1.SelectedIndex = -1;
+            ComboBox2.SelectedIndex = -1;
+            ComboBox3.SelectedIndex = -1;
+            ComboBox4.SelectedIndex = -1;
+
+            for (int i = 0; i < 4; i++)
+            {
+                kolomHoofd[i].Background = Brushes.Transparent;
+                kolomHoofd[i].BorderBrush = Brushes.Transparent;
+
+                Rij1[i].Background = Brushes.Transparent;
+                Rij1[i].BorderBrush = Brushes.Transparent;
+
+                Rij2[i].Background = Brushes.Transparent;
+                Rij2[i].BorderBrush = Brushes.Transparent;
+
+                Rij3[i].Background = Brushes.Transparent;
+                Rij3[i].BorderBrush = Brushes.Transparent;
+
+                Rij4[i].Background = Brushes.Transparent;
+                Rij4[i].BorderBrush = Brushes.Transparent;
+
+                Rij5[i].Background = Brushes.Transparent;
+                Rij5[i].BorderBrush = Brushes.Transparent;
+
+                Rij6[i].Background = Brushes.Transparent;
+                Rij6[i].BorderBrush = Brushes.Transparent;
+
+                Rij7[i].Background = Brushes.Transparent;
+                Rij7[i].BorderBrush = Brushes.Transparent;
+
+                Rij8[i].Background = Brushes.Transparent;
+                Rij8[i].BorderBrush = Brushes.Transparent;
+
+                Rij9[i].Background = Brushes.Transparent;
+                Rij9[i].BorderBrush = Brushes.Transparent;
+
+                Rij10[i].Background = Brushes.Transparent;
+                Rij10[i].BorderBrush = Brushes.Transparent;
+            }
+            resultTextBlock.Text = "";
+            scoreTextBox.Text = $" Score = 100/100";
+            timer.Start();
         }
 
         /// </summary> StopCountdown(): de timer stopt <summary>
@@ -150,7 +233,40 @@ namespace Mastermind2_EmreKayaPXL
             elapsedTime = DateTime.Now - clicked;
             timerLabel.Content = $"{elapsedTime.Seconds} : {elapsedTime.Milliseconds.ToString().PadLeft(3, '0')}";
 
-            if (elapsedTime.Seconds >= 10)
+            if (correctTotalColor1 >= 1 && correctTotalColor2 >= 1 && correctTotalColor3 >= 1 && correctTotalColor4 >= 1)
+            {
+                ToggleDebug();
+
+                messageBoxResult = MessageBox.Show($"U heeft gewonnen!\nScore: {score}/100\nAantal pogingen over: {10 - attempts}" +
+                    $"\nWilt u nog eens proberen?", "winnende bericht", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                timerLabel.Content = "";
+                correctTotalColor1 = 0;
+                clicked = DateTime.Now;
+                attempts = 1;
+                UpdateTitle();
+                ToggleDebug();
+                titleRandomColors();
+                AllesRessetten();
+                label1.Content = "Kleur 1";
+                label2.Content = "Kleur 2";
+                label3.Content = "Kleur 3";
+                label4.Content = "Kleur 4";
+                int MasterMindStrenghtNumber = 0;
+                }
+                else
+                {
+                    this.Close();
+                }
+                return;
+   
+            }
+            else if (attempts > 10)
+            {
+                timerLabel.Content = "";
+            }
+            else if(elapsedTime.Seconds >= 10)
             {
                 timer.Stop();
                 MessageBox.Show("Te laat 10 seconden zijn voorbij, er wordt 1 poging toegevoegd");
@@ -277,16 +393,19 @@ namespace Mastermind2_EmreKayaPXL
                 if (titleColors[0].Contains(label1Color))
                 {
                     label1.BorderBrush = Brushes.DarkRed;
+                    correctTotalColor1 = 1;
                 }
                 else
                 {
                     label1.BorderBrush = Brushes.Wheat;
                     score -= 1;
+                    correctTotalColor1 = 0;
                 }
             }
             else
             {
                 score -= 2;
+                correctTotalColor1 = 0;
             }
             if (randomColorsTextBox.Text.Contains(label2Color))
             {
@@ -294,16 +413,19 @@ namespace Mastermind2_EmreKayaPXL
                 if (titleColors[1].Contains(label2Color))
                 {
                     label2.BorderBrush = Brushes.DarkRed;
+                    correctTotalColor2 = 1;
                 }
                 else
                 {
                     label2.BorderBrush = Brushes.Wheat;
                     score -= 1;
+                    correctTotalColor2 = 0;
                 }
             }
             else
             {
                 score -= 2;
+                correctTotalColor2 = 0;
             }
             if (randomColorsTextBox.Text.Contains(label3Color))
             {
@@ -311,34 +433,39 @@ namespace Mastermind2_EmreKayaPXL
                 if (titleColors[2].Contains(label3Color))
                 {
                     label3.BorderBrush = Brushes.DarkRed;
+                    correctTotalColor3 = 1;
                 }
                 else
                 {
                     label3.BorderBrush = Brushes.Wheat;
                     score -= 1;
+                    correctTotalColor3 = 0;
                 }
             }
             else
             {
                 score -= 2;
+                correctTotalColor3 = 0;
             }
-
             if (randomColorsTextBox.Text.Contains(label4Color))
             {
                 MasterMindStrenghtNumber++;
                 if (titleColors[3].Contains(label4Color))
                 {
                     label4.BorderBrush = Brushes.DarkRed;
+                    correctTotalColor4 = 1;
                 }
                 else
                 {
                     label4.BorderBrush = Brushes.Wheat;
                     score -= 1;
+                    correctTotalColor4 = 0;
                 }
             }
             else
             {
                 score -= 2;
+                correctTotalColor4 = 0;
             }
 
             switch (MasterMindStrenghtNumber)
@@ -359,15 +486,15 @@ namespace Mastermind2_EmreKayaPXL
                     resultTextBlock.Text = "Niet de juiste kleuren gebruikt";
                     break;
             }
-            scoreTextBox.Text = $" Score: {score}";
-            HistorieColorsAttempts();
+            scoreTextBox.Text = $" Score = {score}/100";
+            HistoryColorsAttempts();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             clicked = DateTime.Now;
             timer.Start();
-            scoreTextBox.Text = $" Score: {score}";
+            scoreTextBox.Text = $" Score = 100/100";
         }
 
         private bool isInDebug = false;

@@ -107,6 +107,6 @@
         <Label Name="uitlegSpel" FontSize="10" FontWeight="DemiBold" Content="UITLEG: &#xA;Kies de juiste kleur die op de juiste plaats hoort.&#xA;Rode rand betekent dat de kleur op de juiste plaats staat.&#xA;Lichte beige rand betekent dat de kleur juist is maar op de verkeerde plaats staat" HorizontalAlignment="Left" Margin="15,353,0,0" VerticalAlignment="Top" Height="71" Width="350"/>
         <Label Name="timerLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="504,345,210,40"/>
         <TextBox Name="randomColorsTextBox" Visibility="Collapsed" Background="LightSlateGray" HorizontalAlignment="Left" Margin="495,396,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
-        <TextBox Name="scoreTextBox" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" Margin="499,324,205,73"/>
+        <TextBox Name="scoreTextBox" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" Margin="499,324,184,73"/>
     </Grid>
 </Window>
