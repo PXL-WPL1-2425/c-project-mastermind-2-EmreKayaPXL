@@ -28,12 +28,15 @@ namespace Mastermind2_EmreKayaPXL
         int correctTotalColor3 = 0;
         int correctTotalColor4 = 0;
         MessageBoxResult messageBoxResult;
+        int MasterMindStrenghtNumber = 0;
+        string randomColors;
 
         public MainWindow()
         {
             InitializeComponent();
             titleRandomColors();
             UpdateTitle();
+            
 
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += Timer_Tick;
@@ -132,19 +135,12 @@ namespace Mastermind2_EmreKayaPXL
                         $"\nWilt u nog eens proberen?", "winnende bericht", MessageBoxButton.YesNo, MessageBoxImage.Information);
                     if (messageBoxResult == MessageBoxResult.Yes)
                     {
-                        timerLabel.Content = "";
-                        correctTotalColor1 = 0;
-                        clicked = DateTime.Now;
-                        attempts = 1;
-                        UpdateTitle();
+                        score = 100;
                         ToggleDebug();
-                        titleRandomColors();
                         AllesRessetten();
-                        label1.Content = "Kleur 1";
-                        label2.Content = "Kleur 2";
-                        label3.Content = "Kleur 3";
-                        label4.Content = "Kleur 4";
-                        int MasterMindStrenghtNumber = 0;
+                        UpdateTitle();
+                        randomColorBuilder.Clear();
+                        titleRandomColors();
                     }
                     else
                     {
@@ -169,7 +165,6 @@ namespace Mastermind2_EmreKayaPXL
             List<Label> Rij10 = new List<Label> { A10, B10, C10, D10 };
 
             List<Label> kolomHoofd = new List<Label> { label1, label2, label3, label4 };
-            attempts = 1;
             ComboBox1.SelectedIndex = -1;
             ComboBox2.SelectedIndex = -1;
             ComboBox3.SelectedIndex = -1;
@@ -212,7 +207,19 @@ namespace Mastermind2_EmreKayaPXL
             }
             resultTextBlock.Text = "";
             scoreTextBox.Text = $" Score = 100/100";
+            clicked = DateTime.Now;
             timer.Start();
+            timerLabel.Content = "";
+            correctTotalColor1 = 0;
+            correctTotalColor2 = 0;
+            correctTotalColor3 = 0;
+            correctTotalColor4 = 0;
+            attempts = 1;
+            label1.Content = "Kleur 1";
+            label2.Content = "Kleur 2";
+            label3.Content = "Kleur 3";
+            label4.Content = "Kleur 4";
+            MasterMindStrenghtNumber = 0;
         }
 
         /// </summary> StopCountdown(): de timer stopt <summary>
@@ -235,25 +242,20 @@ namespace Mastermind2_EmreKayaPXL
 
             if (correctTotalColor1 >= 1 && correctTotalColor2 >= 1 && correctTotalColor3 >= 1 && correctTotalColor4 >= 1)
             {
+                attempts--;
+                UpdateTitle();
                 ToggleDebug();
 
                 messageBoxResult = MessageBox.Show($"U heeft gewonnen!\nScore: {score}/100\nAantal pogingen over: {10 - attempts}" +
                     $"\nWilt u nog eens proberen?", "winnende bericht", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                timerLabel.Content = "";
-                correctTotalColor1 = 0;
-                clicked = DateTime.Now;
-                attempts = 1;
-                UpdateTitle();
-                ToggleDebug();
-                titleRandomColors();
-                AllesRessetten();
-                label1.Content = "Kleur 1";
-                label2.Content = "Kleur 2";
-                label3.Content = "Kleur 3";
-                label4.Content = "Kleur 4";
-                int MasterMindStrenghtNumber = 0;
+                    score = 100;
+                    ToggleDebug();
+                    AllesRessetten();
+                    UpdateTitle();
+                    randomColorBuilder.Clear();
+                    titleRandomColors();
                 }
                 else
                 {
@@ -266,7 +268,7 @@ namespace Mastermind2_EmreKayaPXL
             {
                 timerLabel.Content = "";
             }
-            else if(elapsedTime.Seconds >= 10)
+            else if(elapsedTime.Seconds >= 20)
             {
                 timer.Stop();
                 MessageBox.Show("Te laat 10 seconden zijn voorbij, er wordt 1 poging toegevoegd");
@@ -291,26 +293,28 @@ namespace Mastermind2_EmreKayaPXL
             }
         }
 
-        StringBuilder randomColorBuilder = new StringBuilder("Mastermind kleur: ");
+        StringBuilder randomColorBuilder;
         private void titleRandomColors()
         {
+
             string[] colors = { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
             Random random = new Random();
+            randomColorBuilder = new StringBuilder("Mastermind kleur: ");
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (i < 4)
-                {
+
                     int randomIndex = random.Next(0, colors.Length);
                     randomColorBuilder.Append(colors[randomIndex]);
                     if (i < 3)
                     {
                         randomColorBuilder.Append(", ");
                     }
-                }
+                
             }
-            string randomColors = randomColorBuilder.ToString();
+            randomColors = randomColorBuilder.ToString();
             randomColorsTextBox.Text = randomColors;
+            
         }
 
         private void UpdateTitle()
@@ -380,13 +384,14 @@ namespace Mastermind2_EmreKayaPXL
 
             string[] titleColors = randomColorsTextBox.Text.Split(':')[1].Split(',');
 
-            int MasterMindStrenghtNumber = 0;
 
             string label1Color = label1.Content.ToString();
             string label2Color = label2.Content.ToString();
             string label3Color = label3.Content.ToString();
             string label4Color = label4.Content.ToString();
 
+        //int MasterMindStrenghtNumber = 0;
+            MasterMindStrenghtNumber = 0;
             if (randomColorsTextBox.Text.Contains(label1Color))
             {
                 MasterMindStrenghtNumber++;
@@ -531,6 +536,7 @@ namespace Mastermind2_EmreKayaPXL
             if (closeTheWindow == MessageBoxResult.Yes)
             {
                 this.Close();
+                //???????????????????????????????????????????????
             }
             else
             {
@@ -538,4 +544,5 @@ namespace Mastermind2_EmreKayaPXL
             }
         }
     }
+
 }
