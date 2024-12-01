@@ -36,11 +36,8 @@ namespace Mastermind2_EmreKayaPXL
             InitializeComponent();
             titleRandomColors();
             UpdateTitle();
-            
-
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += Timer_Tick;
-
         }
 
         private void HistoryColorsAttempts()
@@ -262,13 +259,12 @@ namespace Mastermind2_EmreKayaPXL
                     this.Close();
                 }
                 return;
-   
             }
             else if (attempts > 10)
             {
                 timerLabel.Content = "";
             }
-            else if(elapsedTime.Seconds >= 20)
+            else if(elapsedTime.Seconds >= 10)
             {
                 timer.Stop();
                 MessageBox.Show("Te laat 10 seconden zijn voorbij, er wordt 1 poging toegevoegd");
@@ -295,8 +291,7 @@ namespace Mastermind2_EmreKayaPXL
 
         StringBuilder randomColorBuilder;
         private void titleRandomColors()
-        {
-
+        { 
             string[] colors = { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
             Random random = new Random();
             randomColorBuilder = new StringBuilder("Mastermind kleur: ");
@@ -310,11 +305,9 @@ namespace Mastermind2_EmreKayaPXL
                     {
                         randomColorBuilder.Append(", ");
                     }
-                
             }
             randomColors = randomColorBuilder.ToString();
-            randomColorsTextBox.Text = randomColors;
-            
+            randomColorsTextBox.Text = randomColors;    
         }
 
         private void UpdateTitle()
@@ -390,7 +383,6 @@ namespace Mastermind2_EmreKayaPXL
             string label3Color = label3.Content.ToString();
             string label4Color = label4.Content.ToString();
 
-        //int MasterMindStrenghtNumber = 0;
             MasterMindStrenghtNumber = 0;
             if (randomColorsTextBox.Text.Contains(label1Color))
             {
@@ -525,24 +517,30 @@ namespace Mastermind2_EmreKayaPXL
             {
                 randomColorsTextBox.Visibility = Visibility.Collapsed;
             }
-
         }
 
-        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs uit)
         {
-
         MessageBoxResult closeTheWindow = MessageBox.Show("Bent u zeker Om het spel te sluiten?","VensterSluiten", MessageBoxButton.YesNo);
   
-            if (closeTheWindow == MessageBoxResult.Yes)
+            if (closeTheWindow == MessageBoxResult.Yes )
             {
-                this.Close();
-                //???????????????????????????????????????????????
+                uit.Cancel = false;
             }
             else
             {
-                e.Cancel=true;
+                uit.Cancel = true;
             }
         }
-    }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs k)
+        {
+            StopCountdown();
+            MessageBox.Show("Kies de juiste kleur die op de juiste plaats hoort." +
+                "\nRode rand betekent dat de kleur op de juiste plaats staat." +
+                "\nLichte beige rand betekent dat de kleur juist is maar op de verkeerde plaats staat");
+            clicked = DateTime.Now; 
+            timer.Start();
+        }
+    }
 }

@@ -6,107 +6,151 @@
         xmlns:local="clr-namespace:Mastermind2_EmreKayaPXL"
         mc:Ignorable="d"
         Title="MasterMind" Height="450" Width="800" Background="LightGray" Loaded="Window_Loaded" KeyDown="Window_Keydown" Closing="WindowClosing"  >
-    <Grid>
-        <StackPanel Name="ComboBoxPanel" Orientation="Horizontal" Margin="0,0,0,0">
-            <ComboBox Name="ComboBox1" BorderThickness="3" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox1_SelectionChanged" >
-                <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
-                <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
-                <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
-                <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
-                <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
-                <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
-            </ComboBox>
-            <ComboBox Name="ComboBox2" BorderThickness="3" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox2_SelectionChanged" >
-                <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
-                <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
-                <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
-                <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
-                <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
-                <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
-            </ComboBox>
-            <ComboBox Name="ComboBox3" BorderThickness="3" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox3_SelectionChanged" >
-                <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
-                <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
-                <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
-                <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
-                <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
-                <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
-            </ComboBox>
+    <Viewbox Margin="0">
+        <Grid Margin="0" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-            <ComboBox Name="ComboBox4" BorderThickness="3" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox4_SelectionChanged" >
-                <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
-                <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
-                <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
-                <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
-                <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
-                <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
-            </ComboBox>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="49*"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="64*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
+            <StackPanel Margin="0"  Grid.ColumnSpan="8" >
+                <Menu Background="LightSteelBlue" Height="30" VerticalAlignment="Top">
+                    <MenuItem Height="30" FontSize="15" Header="SPELREGELS" HorizontalContentAlignment="Center" Click="MenuItem_Click" Margin="0"/>
+                </Menu>
+            </StackPanel>
 
-        </StackPanel>
+            <StackPanel Grid.Row="1" Name="ComboBoxPanel" Orientation="Horizontal" Grid.ColumnSpan="8">
+                <ComboBox Name="ComboBox1" BorderThickness="3" SelectionChanged="ComboBox1_SelectionChanged" Width="180" Margin="10,0">
+                    <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
+                    <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
+                    <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
+                    <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
+                    <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
+                    <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
+                </ComboBox>
+                <ComboBox Name="ComboBox2" BorderThickness="3" SelectionChanged="ComboBox2_SelectionChanged" Width="180" Margin="10,0" >
+                    <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
+                    <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
+                    <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
+                    <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
+                    <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
+                    <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
+                </ComboBox>
+                <ComboBox Name="ComboBox3" BorderThickness="3" SelectionChanged="ComboBox3_SelectionChanged" Width="180" Margin="10,0" >
+                    <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
+                    <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
+                    <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
+                    <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
+                    <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
+                    <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
+                </ComboBox>
 
-
-        <StackPanel>
-            <Label Name="A1" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,120,0,0" Height="20" Width="180"/>
-            <Label Name="A2" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A3" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A4" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A5" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A6" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A7" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A8" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A9" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-            <Label Name="A10" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,0,0,0" Height="20" Width="180"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Name="B1" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,120,0,0" Height="20" Width="180"/>
-            <Label Name="B2" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B3" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B4" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B5" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B6" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B7" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B8" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B9" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-            <Label Name="B10" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,0,0,0" Height="20" Width="180"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Name="C1" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,120,0,0" Height="20" Width="180"/>
-            <Label Name="C2" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C3" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C4" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C5" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C6" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C7" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C8" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C9" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-            <Label Name="C10" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,0,0,0" Height="20" Width="180"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Name="D1" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,120,0,0" Height="20" Width="180"/>
-            <Label Name="D2" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D3" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D4" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D5" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D6" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D7" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D8" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D9" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-            <Label Name="D10" BorderThickness="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,0,0,0" Height="20" Width="180"/>
-
-        </StackPanel>
+                <ComboBox Name="ComboBox4" BorderThickness="3" SelectionChanged="ComboBox4_SelectionChanged" Width="180" Margin="10,0">
+                    <ComboBoxItem Content="Rood" Background="Red"></ComboBoxItem>
+                    <ComboBoxItem Content="Geel" Background="Yellow"></ComboBoxItem>
+                    <ComboBoxItem Content="Oranje" Background="Orange"></ComboBoxItem>
+                    <ComboBoxItem Content="Wit" Background="White"></ComboBoxItem>
+                    <ComboBoxItem Content="Groen" Background="Green"></ComboBoxItem>
+                    <ComboBoxItem Content="Blauw" Background="Blue"></ComboBoxItem>
+                </ComboBox>
 
 
+            </StackPanel>
 
-        <Label Name="label1" FontSize="20" FontWeight="DemiBold" Content="Kleur 1" HorizontalContentAlignment="Center" BorderThickness="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,40,0,0" Height="80" Width="180"/>
-        <Label Name="label2" FontSize="20" FontWeight="DemiBold" Content="Kleur 2" HorizontalContentAlignment="Center" BorderThickness="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,40,0,0" Height="80" Width="180"/>
-        <Label Name="label3" FontSize="20" FontWeight="DemiBold" Content="Kleur 3" HorizontalContentAlignment="Center" BorderThickness="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405,40,0,0" Height="80" Width="180"/>
-        <Label Name="label4" FontSize="20" FontWeight="DemiBold" Content="Kleur 4" HorizontalContentAlignment="Center" BorderThickness="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="600,40,0,0" Height="80" Width="180"/>
-        <TextBlock Name="resultTextBlock" FontSize="15" Text="" VerticalAlignment="Top" Margin="245,343,215,0" Height="36"/>
-        <Button x:Name="CheckButton" Content="Check code" Background="Gray" BorderBrush="Black" BorderThickness="4" VerticalAlignment="Top" HorizontalAlignment="Left" Height="70" Width="148" Click="CheckButton_Click" Margin="600,324,0,0"/>
-        <Label Name="uitlegSpel" FontSize="10" FontWeight="DemiBold" Content="UITLEG: &#xA;Kies de juiste kleur die op de juiste plaats hoort.&#xA;Rode rand betekent dat de kleur op de juiste plaats staat.&#xA;Lichte beige rand betekent dat de kleur juist is maar op de verkeerde plaats staat" HorizontalAlignment="Left" Margin="15,353,0,0" VerticalAlignment="Top" Height="71" Width="350"/>
-        <Label Name="timerLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="504,345,210,40"/>
-        <TextBox Name="randomColorsTextBox" Visibility="Collapsed" Background="LightSlateGray" HorizontalAlignment="Left" Margin="495,396,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
-        <TextBox Name="scoreTextBox" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" Margin="499,324,184,73"/>
-    </Grid>
+            <StackPanel Grid.ColumnSpan="8" Grid.Row="3" Orientation="Horizontal">
+                <StackPanel Grid.ColumnSpan="2" Margin="10,0" Width="180">
+                    <Label Name="A1" BorderThickness="3" Height="20" />
+                    <Label Name="A2" BorderThickness="3" Height="20" />
+                    <Label Name="A3" BorderThickness="3" Height="20" />
+                    <Label Name="A4" BorderThickness="3" Height="20" />
+                    <Label Name="A5" BorderThickness="3" Height="20" />
+                    <Label Name="A6" BorderThickness="3" Height="20" />
+                    <Label Name="A7" BorderThickness="3" Height="20" />
+                    <Label Name="A8" BorderThickness="3" Height="20" />
+                    <Label Name="A9" BorderThickness="3" Height="20" />
+                    <Label Name="A10" BorderThickness="3" Height="20"/>
+                </StackPanel>
+                <StackPanel Grid.ColumnSpan="2" Grid.Column="3" Margin="10,0" Width="180">
+                    <Label Name="B1" BorderThickness="3" Height="20" />
+                    <Label Name="B2" BorderThickness="3" Height="20" />
+                    <Label Name="B3" BorderThickness="3" Height="20" />
+                    <Label Name="B4" BorderThickness="3" Height="20" />
+                    <Label Name="B5" BorderThickness="3" Height="20" />
+                    <Label Name="B6" BorderThickness="3" Height="20" />
+                    <Label Name="B7" BorderThickness="3" Height="20" />
+                    <Label Name="B8" BorderThickness="3" Height="20" />
+                    <Label Name="B9" BorderThickness="3" Height="20" />
+                    <Label Name="B10" BorderThickness="3" Height="20"/>
+                </StackPanel>
+                <StackPanel Grid.ColumnSpan="2" Grid.Column="5" Margin="10,0" Width="180">
+                    <Label Name="C1" BorderThickness="3" Height="20"/>
+                    <Label Name="C2" BorderThickness="3" Height="20" />
+                    <Label Name="C3" BorderThickness="3" Height="20" />
+                    <Label Name="C4" BorderThickness="3" Height="20" />
+                    <Label Name="C5" BorderThickness="3" Height="20" />
+                    <Label Name="C6" BorderThickness="3" Height="20" />
+                    <Label Name="C7" BorderThickness="3" Height="20" />
+                    <Label Name="C8" BorderThickness="3" Height="20" />
+                    <Label Name="C9" BorderThickness="3" Height="20" />
+                    <Label Name="C10" BorderThickness="3" Height="20"/>
+                </StackPanel>
+                <StackPanel Grid.ColumnSpan="2" Grid.Column="7" Margin="10,0" Width="180">
+                    <Label Name="D1" BorderThickness="3" Height="20"/>
+                    <Label Name="D2" BorderThickness="3" Height="20"/>
+                    <Label Name="D3" BorderThickness="3" Height="20"/>
+                    <Label Name="D4" BorderThickness="3" Height="20"/>
+                    <Label Name="D5" BorderThickness="3" Height="20"/>
+                    <Label Name="D6" BorderThickness="3" Height="20"/>
+                    <Label Name="D7" BorderThickness="3" Height="20"/>
+                    <Label Name="D8" BorderThickness="3" Height="20"/>
+                    <Label Name="D9" BorderThickness="3" Height="20"/>
+                    <Label Name="D10" BorderThickness="3" Height="20"/>
+
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="8" Orientation="Horizontal">
+                <Label Name="label1" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Content="Kleur 1" BorderThickness="6" Width="180" Margin="10,0"/>
+                <Label Name="label2" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Content="Kleur 2" BorderThickness="6" Width="180" Margin="10,0"/>
+                <Label Name="label3" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Content="Kleur 3" BorderThickness="6" Width="180" Margin="10,0"/>
+                <Label Name="label4" HorizontalContentAlignment="Center"  FontSize="20" FontWeight="DemiBold" Content="Kleur 4" BorderThickness="6" Width="180" Margin="10,0"/>
+            </StackPanel>
+
+
+
+            <TextBlock Grid.Row="4" Grid.ColumnSpan="3" Name="resultTextBlock" FontSize="15" Text="" Height="36"/>
+            <TextBox  Grid.ColumnSpan="2" Grid.Row="5" Name="randomColorsTextBox" Visibility="Collapsed" Background="LightSlateGray" Text="" VerticalContentAlignment="Center"/>
+            <Button x:Name="CheckButton" Grid.Row="4" Grid.Column="7" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="Check code" Background="Gray" 
+                    BorderBrush="Black" BorderThickness="4" Click="CheckButton_Click" Width="100" Height="100"/>
+            <TextBox Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" Name="scoreTextBox" Background="Transparent" BorderBrush="Transparent" 
+                     Text="" HorizontalContentAlignment="Right" Margin="0,0,100,0"/>
+
+
+
+            <Label Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="5" Panel.ZIndex="1" Name="timerLabel" Content=""  Height="40" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="0,0,100,0"/>
+
+            <Image Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="5" Panel.ZIndex="2" Source="/stopwatch.png" Height="40" Width="40" Margin="5" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            <Label Grid.Row="6" Grid.ColumnSpan="8" Content="MasterMind" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LightSteelBlue"></Label>
+
+        </Grid>
+    </Viewbox>
 </Window>
